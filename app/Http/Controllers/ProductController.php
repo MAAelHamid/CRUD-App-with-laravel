@@ -83,8 +83,8 @@ class ProductController extends Controller
             'name'=>'required',
             'price'=>'required'
         ]);
-        $product = Product::update($request->all());
-        return redirect()->route('products.create')->with('success', 'Product Updated Successfully');
+        $product->update($request->all());
+        return redirect()->route('products.index')->with('success', 'Product Updated Successfully');
     }
 
     /**
