@@ -1,15 +1,7 @@
 @extends('products.layout')
 
 @section('content')
-  <h2 class="text-center mt-3">Home</h2>
-  <div>
-    @if ($message = Session::get('success'))
-      <div class="alert alert-success mt-3">
-        {{ $message }}
-      </div>
-    @endif
-  </div>
-
+  <h2 class="text-center mt-3">Trash</h2>
   <table class="table mt-5">
     <thead>
       <tr>
@@ -29,19 +21,15 @@
           <td>{{ $item->name }}</td>
           <td>{{ $item->price }}</td>
           <td>
-            <a href="{{ route('products.edit',$item->id) }}" class="btn btn-success">Edit</a>
-            <a href="{{ route('products.show', $item->id) }}" class="btn btn-info">Show</a>
-            <a href="{{ route('soft.delete',$item->id) }}" class="btn btn-danger">Soft Delete</a>
             <form action="{{ route('products.destroy', $item->id) }}" class="d-inline-block" method="POST">
               @csrf
               {{ method_field('DELETE') }}
-              <button type="submit" class="btn btn-danger">Delete</button>
+              <button type="submit" class="btn btn-danger">Delete For Ever</button>
             </form>
           </td>
         </tr>
       @endforeach
     </tbody>
   </table>
-
   {!! $products->links() !!}
 @endsection

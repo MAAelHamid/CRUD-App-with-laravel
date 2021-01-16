@@ -19,6 +19,14 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
+    public function trashedProducts()
+    {
+        // $products = Product::all();
+        $products = Product::withTrashed()->latest()->paginate(10); // show latest 10 product
+        return view('products.trash', compact('products'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -96,6 +104,12 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+        return redirect()->route('products.index')->with('success', 'Product Deleted Successfully');
+    }
+    
+    public function softDeletes($id)
+    {
+        $product=Product::find($id)->delete();
         return redirect()->route('products.index')->with('success', 'Product Deleted Successfully');
     }
 }

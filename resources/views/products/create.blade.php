@@ -1,17 +1,10 @@
 @extends('products.layout')
 
 @section('content')
-  {{-- <div class="card mt-5 text-center">
-    <div class="card-body">
-      <h5 class="card-title">Super Market</h5>
-      <p class="card-text">U Can Add Items To Be Selled Here</p>
-      <a href="{{ route('products.create') }}" class="btn btn-primary">Create</a>
-    </div>
-  </div> --}}
-
+  <h2 class="text-center mt-3">Create</h2>
   <form action="{{ route('products.store') }}" method="POST">
     @csrf
-    <div class="mb-3 mt-5">
+    <div class="mb-3 mt-3">
       <label for="name" class="form-label">Product Name</label>
       <input type="text" name="name" class="form-control" id="name">
     </div>

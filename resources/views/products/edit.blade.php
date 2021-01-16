@@ -1,7 +1,7 @@
 @extends('products.layout')
 
 @section('content')
-  <h2>Edit page</h2>
+  <h2 class="text-center mt-3">Edit</h2>
   <a href="{{ route('products.index') }}">Home</a>
   <form action="{{ route('products.update', $product->id) }}" method="POST">
     @csrf

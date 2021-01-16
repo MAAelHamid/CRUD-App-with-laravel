@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::resource('products', 'ProductController');
+Route::get('product/soft/delete/{id}', 'ProductController@softDeletes')->name('soft.delete');
+Route::get('product/trash', 'ProductController@trashedProducts')->name('product.trash');
